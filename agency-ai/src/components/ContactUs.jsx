@@ -4,11 +4,14 @@ import assets from "../assets/assets";
 import toast from "react-hot-toast";
 import { motion } from "motion/react";
 
+const FORM_API_KEY = import.meta.env.VITE_FORM_KEY;
+
 const ContactUs = () => {
   const onSubmit = async (event) => {
+    console.log(FORM_API_KEY)
     event.preventDefault();
     const formData = new FormData(event.target);
-    formData.append("access_key", "c1161c3d-38a0-4dcb-8780-a6f06e84a7b4");
+    formData.append("access_key", FORM_API_KEY);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
